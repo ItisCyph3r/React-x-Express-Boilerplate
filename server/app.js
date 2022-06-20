@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const port = 4000;
-const host = '0.0.0.1';
+const host = '0.0.0.0'
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
@@ -20,6 +20,6 @@ app
 })
 
 
-app.listen(process.env.YOUR_PORT || process.env.PORT || port, () => {
+app.listen(process.env.YOUR_PORT || process.env.PORT || port, host, () => {
     console.log('Listening to server on port ' + port)
 })
