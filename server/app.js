@@ -4,16 +4,24 @@ const cors = require('cors');
 const app = express();
 const port = 4000;
 const host = '0.0.0.0'
+const Movies = require('./movie');
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(cors());
-app.set('view engine', 'ejs');
+
 
 app
 .route('/api')
 .get((req, res) => {
-    res.send('Connected to Node Backend')
+    Movies.find((err, found) => {
+        if (err)
+            return console.log(err)
+        else {
+            res.send(found)
+        }
+    })
 })
 .post((req, res) => {
     console.log('Connected to Reactjs')
