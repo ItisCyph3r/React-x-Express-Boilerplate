@@ -1,6 +1,7 @@
 import React from 'react';
 import './home.css';
 import styled from 'styled-components' 
+import Tweet from '../conponents/createTweet/createTweet';
 
 export default function Home() {
 
@@ -15,19 +16,21 @@ export default function Home() {
     `
     const Sidemenu = styled.div`
         padding: 1rem 1.5rem;
-        width: 25%;  
+        width: 20%;  
         background-color: #000;
         
     `
     const Feed = styled.div`
         padding: 1rem;
-        width: 50%;
+        width: 60%;
         height: 100%;
         overflow-y: scroll;
         background-color: #000000;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
-        border: 0.5px solid grey;
+        ${'' /* border: 0.5px solid grey; */}
+        border-left: 0.5px solid grey;
+        border-right: 0.5px solid grey;
 
         &::-webkit-scrollbar {
         display: none;
@@ -35,7 +38,7 @@ export default function Home() {
     `
     const Notifications = styled.div`
         padding: 1rem;
-        width: 25%;
+        width: 20%;
         background-color: #000000;
         
     `
@@ -50,7 +53,7 @@ export default function Home() {
                     </h2>
                 </Sidemenu>
                 <Feed>  
-                    hehe
+                    <Tweet/>
                 </Feed>
                 <Notifications>
                     c
