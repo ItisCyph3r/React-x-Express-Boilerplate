@@ -1,56 +1,96 @@
-/**
- * I'm trying to get the value of the textarea and display it in the console.
- * @returns A React component.
- */
-
 import { Divider } from '@mui/material';
-import React from 'react';
-import styled from 'styled-components';
+import PublicIcon from '@mui/icons-material/Public';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import GifBoxIcon from '@mui/icons-material/GifBox';
+import PollIcon from '@mui/icons-material/Poll';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Fab from '@mui/material';
+import React, { useState } from 'react';
 import ProfilePic from '../profilePic/profilePic';
-
+import './createTweet.css';
 
 export default function Tweet() {
-
-    const Container = styled.div`
-        display: flex;
-        gap: 20px;
-    `;
-
-    const TweetArea = styled.textarea`
-        width: 100%;
-        height: 100px;
-        padding: 12px 0px;
-        box-sizing: border-box;
-        background-color: #000;
-        border: 0px solid #fff;
-        font-size: 1.25rem;
-        resize: none;
-        margin-top: 10px;
-    `;
-
-    const SubmitTweet = styled.div`
-        flex-direction: column;
-        width: 100%;
-        margin-top: 20px;
-    `;
     
-    const handleInput = (e) => {
-        console.log(e.target.value)
-    }
-    return (
-        /* It's a React component. */
-        <Container>
-            <ProfilePic/>
-            
-            <div style={{width: '100%'}}>
-            <TweetArea onChange={handleInput} placeholder="What's happening?"/>
+    const [displayOptions, setDisplayOptions] = useState(false);
 
-            <Divider />
-            <SubmitTweet>
-                dsfdsdasda
-            </SubmitTweet>
+    const [inputIsClicked, setInputIsClicked] = useState(false);
+
+    const [tweetInput, setTweetInput] = useState('');
+
+    const displayOptionsBTN = (e) => {
+        setDisplayOptions(true);
+    }
+
+    const enableBTN = (e) => {
+        setTweetInput(e.target.value)
+    }
+
+    
+    
+    return (
+        
+        <>
+        <div className='px-5'>
+            <div className='mt-3 text-xl font-bold'>
+                <h1> Home</h1>
             </div>
-            <hr />
-        </Container>
+
+            <div className='flex mt-4 gap-2'>
+                <ProfilePic width={56} height= {56}/>
+                
+                <div className='w-full'>
+                    <textarea 
+                        className='ml-2 w-full h-12 py-3 bg-black text-lg resize-none' 
+                        onClick={displayOptionsBTN} 
+                        onChange={enableBTN}
+                        placeholder="What's happening?"
+                    />
+
+                    <div className='ml-2 flex'>
+                        {   
+                            displayOptions &&
+                            <>
+                                <PublicIcon 
+                                    color="primary"    
+                                    fontSize="small"
+                                /> 
+                            
+                                
+                                <span className='ml-2 text-sm font-bold text-twitterBlue'>
+                                    Everyone can reply
+                                </span>
+                            </>
+                        }
+                    </div>
+
+                    {
+                        displayOptions && <hr className='w-full mt-3 border-gray-700' />
+                    }
+                    
+                    <div className='w-full mt-3 flex justify-between items-center'>
+                        <div>
+                            <CollectionsIcon className='mr-2' color="primary"/>
+                            <PublicIcon className='mr-2' color="primary"/>
+                            <GifBoxIcon className='mr-2' color="primary"/>
+                            <PollIcon className='mr-2' color="primary"/>
+                            <EmojiEmotionsIcon className='mr-2' color="primary"/>
+                            <ScheduleIcon className='mr-2' color="primary"/>
+                            <LocationOnIcon className='mr-2' color="primary"/>
+                        </div>
+                    
+                        <button disabled={!tweetInput} className={`py-2 px-5 bg-twitterBlue text-2.5rem rounded-3xl ${tweetInput ? 'opacity-100' : 'opacity-50'}`} >
+                            Tweet
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+        <hr className='w-full mt-3 border-gray-700' />
+        <Divider />
+        </>
     );
 }

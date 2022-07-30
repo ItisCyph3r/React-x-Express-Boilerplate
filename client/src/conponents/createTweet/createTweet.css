@@ -1,8 +1,7 @@
-.feed{
+textarea{
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
-.feed::-webkit-scrollbar {
+textarea::-webkit-scrollbar{
     display: none;
-};
-    
+}
