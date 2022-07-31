@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfilePic from '../profilePic/profilePic';
+import VerifiedIcon from '@mui/icons-material/Verified';
 
 export default function Posts() {
     return (
@@ -24,8 +25,12 @@ export default function Posts() {
 
                 <div className='ml-2'>
                     <div className='cursor-pointer'>
-                        <span className=''>
+                        <span className='gap-8'>
                             Samuel😊 
+                            <VerifiedIcon 
+                                fontSize="small" 
+                                sx={{ color: 'red-[#1D9BF0]' }}
+                            />
                         </span>
                         <span className='opacity-50 text-sm'> 
                             @getsomemaidens . 13h
